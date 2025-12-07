@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class QuizApp {
-    // in the test changes
+    // file handlings case
 
     static Scanner input = new Scanner(System.in);
 
@@ -51,7 +51,6 @@ public class QuizApp {
             String ch = input.nextLine();
 
             switch (ch) {
-<<<<<<< HEAD
                 case "1":
                     adminLogin();
                     break;
@@ -62,8 +61,7 @@ public class QuizApp {
                     System.out.println("Goodbye!");
                     return;
                 default:
-                    System.out.println("Invalid choice!");
-=======
+                    System.out.println("Invalid chooice");
                 case "1": adminLogin(); break;
                 case "2": studentLogin(); break;
                 case "3": System.out.println("Goodbye!"); return;
@@ -103,7 +101,6 @@ public class QuizApp {
             String ch = input.nextLine();
 
             switch (ch) {
-<<<<<<< HEAD
                 case "1":
                     adminPanel(islamiyat, "Islamiyat", ISLAM_FILE);
                     break;
@@ -123,7 +120,6 @@ public class QuizApp {
                     return;
                 default:
                     System.out.println("Invalid choice!");
-=======
                 case "1": adminPanel(islamiyat, "Islamiyat", ISLAM_FILE); break;
                 case "2": adminPanel(math, "Math", MATH_FILE); break;
                 case "3": adminPanel(english, "English", ENGLISH_FILE); break;
@@ -150,7 +146,6 @@ public class QuizApp {
             String ch = input.nextLine();
 
             switch (ch) {
-<<<<<<< HEAD
                 case "1":
                     addQuestion(subjectArray, subjectName, fileName);
                     break;
@@ -164,13 +159,19 @@ public class QuizApp {
                     return;
                 default:
                     System.out.println("Invalid choice!");
-=======
-                case "1": addQuestion(subjectArray, subjectName, fileName); break;
-                case "2": viewQuestions(subjectArray, subjectName); break;
-                case "3": updateQuestion(subjectArray, subjectName, fileName); break;
-                case "4": return;
-                default: System.out.println("Invalid choice!");
->>>>>>> 070d6384b2125006c00d11e3f803ae0b5a66e394
+                case "1":
+                    addQuestion(subjectArray, subjectName, fileName);
+                    break;
+                case "2":
+                    viewQuestions(subjectArray, subjectName);
+                    break;
+                case "3":
+                    updateQuestion(subjectArray, subjectName, fileName);
+                    break;
+                case "4":
+                    return;
+                default:
+                    System.out.println("Invalid choice!");
             }
         }
     }
@@ -279,7 +280,7 @@ public class QuizApp {
         String ch = input.nextLine();
 
         switch (ch) {
-<<<<<<< HEAD
+
             case "1":
                 takeQuiz(name, islamiyat, "Islamiyat");
                 break;
@@ -297,14 +298,23 @@ public class QuizApp {
                 break;
             default:
                 System.out.println("Invalid subject!");
-=======
-            case "1": takeQuiz(name, islamiyat, "Islamiyat"); break;
-            case "2": takeQuiz(name, math, "Math"); break;
-            case "3": takeQuiz(name, english, "English"); break;
-            case "4": takeQuiz(name, science, "Science"); break;
-            case "5": takeQuiz(name, computer, "Computer"); break;
-            default: System.out.println("Invalid subject!");
->>>>>>> 070d6384b2125006c00d11e3f803ae0b5a66e394
+            case "1":
+                takeQuiz(name, islamiyat, "Islamiyat");
+                break;
+            case "2":
+                takeQuiz(name, math, "Math");
+                break;
+            case "3":
+                takeQuiz(name, english, "English");
+                break;
+            case "4":
+                takeQuiz(name, science, "Science");
+                break;
+            case "5":
+                takeQuiz(name, computer, "Computer");
+                break;
+            default:
+                System.out.println("Invalid subject!");
         }
     }
 
@@ -388,12 +398,9 @@ public class QuizApp {
             int count = getCount(arr);
 
             for (int i = 0; i < count; i++) {
-                fw.write(arr[i][0] + ";" + arr[i][1] + ";" + arr[i][2] + ";" +
-<<<<<<< HEAD
+                fw.write(arr[i][0] + ";" + arr[i][1] + ";" + arr[i][2] + ";" 
                         arr[i][3] + ";" + arr[i][4] + ";" + arr[i][5] + "\n");
-=======
-                         arr[i][3] + ";" + arr[i][4] + ";" + arr[i][5] + "\n");
->>>>>>> 070d6384b2125006c00d11e3f803ae0b5a66e394
+                 arr[i][3] + ";" + arr[i][4] + ";" + arr[i][5] + "\n");
             }
 
             fw.close();

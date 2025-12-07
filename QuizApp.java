@@ -2,7 +2,6 @@ import java.util.*;
 import java.io.*;
 
 public class QuizApp {
-    // file handlings case
 
     static Scanner input = new Scanner(System.in);
 
@@ -61,12 +60,7 @@ public class QuizApp {
                     System.out.println("Goodbye!");
                     return;
                 default:
-                    System.out.println("Invalid chooice");
-                case "1": adminLogin(); break;
-                case "2": studentLogin(); break;
-                case "3": System.out.println("Goodbye!"); return;
-                default: System.out.println("Invalid choice!");
->>>>>>> 070d6384b2125006c00d11e3f803ae0b5a66e394
+                    System.out.println("Invalid choice!");
             }
         }
     }
@@ -120,14 +114,6 @@ public class QuizApp {
                     return;
                 default:
                     System.out.println("Invalid choice!");
-                case "1": adminPanel(islamiyat, "Islamiyat", ISLAM_FILE); break;
-                case "2": adminPanel(math, "Math", MATH_FILE); break;
-                case "3": adminPanel(english, "English", ENGLISH_FILE); break;
-                case "4": adminPanel(science, "Science", SCIENCE_FILE); break;
-                case "5": adminPanel(computer, "Computer", COMPUTER_FILE); break;
-                case "6": return;
-                default: System.out.println("Invalid choice!");
->>>>>>> 070d6384b2125006c00d11e3f803ae0b5a66e394
             }
         }
     }
@@ -146,19 +132,6 @@ public class QuizApp {
             String ch = input.nextLine();
 
             switch (ch) {
-                case "1":
-                    addQuestion(subjectArray, subjectName, fileName);
-                    break;
-                case "2":
-                    viewQuestions(subjectArray, subjectName);
-                    break;
-                case "3":
-                    updateQuestion(subjectArray, subjectName, fileName);
-                    break;
-                case "4":
-                    return;
-                default:
-                    System.out.println("Invalid choice!");
                 case "1":
                     addQuestion(subjectArray, subjectName, fileName);
                     break;
@@ -262,194 +235,6 @@ public class QuizApp {
         saveSubject(arr, fileName);
 
         System.out.println("Question updated successfully!");
-    }
-
-    // ---------------- STUDENT LOGIN ------------------
-    public static void studentLogin() {
-
-        System.out.print("Enter your name: ");
-        String name = input.nextLine();
-
-        System.out.println("\nSelect Subject:");
-        System.out.println("1. Islamiyat");
-        System.out.println("2. Math");
-        System.out.println("3. English");
-        System.out.println("4. Science");
-        System.out.println("5. Computer");
-        System.out.print("Enter choice: ");
-        String ch = input.nextLine();
-
-        switch (ch) {
-
-            case "1":
-                takeQuiz(name, islamiyat, "Islamiyat");
-                break;
-            case "2":
-                takeQuiz(name, math, "Math");
-                break;
-            case "3":
-                takeQuiz(name, english, "English");
-                break;
-            case "4":
-                takeQuiz(name, science, "Science");
-                break;
-            case "5":
-                takeQuiz(name, computer, "Computer");
-                break;
-            default:
-                System.out.println("Invalid subject!");
-            case "1":
-                takeQuiz(name, islamiyat, "Islamiyat");
-                break;
-            case "2":
-                takeQuiz(name, math, "Math");
-                break;
-            case "3":
-                takeQuiz(name, english, "English");
-                break;
-            case "4":
-                takeQuiz(name, science, "Science");
-                break;
-            case "5":
-                takeQuiz(name, computer, "Computer");
-                break;
-            default:
-                System.out.println("Invalid subject!");
-        }
-    }
-
-    // ---------------- TAKE QUIZ (TIMER REMOVED) ------------------
-    public static void takeQuiz(String studentName, String[][] arr, String subjectName) {
-
-        int count = getCount(arr);
-
-        if (count == 0) {
-            System.out.println("No questions available in " + subjectName + ".");
-            return;
-        }
-
-        int score = 0;
-
-        System.out.println("\nStarting Quiz (" + subjectName + ") for " + studentName + ".");
-
-        for (int i = 0; i < count; i++) {
-
-            System.out.println("\nQ" + (i + 1) + ": " + arr[i][0]);
-            System.out.println("A. " + arr[i][1]);
-            System.out.println("B. " + arr[i][2]);
-            System.out.println("C. " + arr[i][3]);
-            System.out.println("D. " + arr[i][4]);
-            System.out.print("Your answer: ");
-
-            String ans = input.nextLine().toUpperCase();
-
-            if (ans.equals(arr[i][5])) {
-                System.out.println("Correct!");
-                score++;
-            } else {
-                System.out.println("Incorrect! Correct answer: " + arr[i][5]);
-            }
-        }
-
-        System.out.println("\nQuiz Finished! Your score: " + score + "/" + count);
-        saveScore(studentName, subjectName, score);
-    }
-
-    // ---------------- SAVE SCORE ------------------
-    public static void saveScore(String name, String subject, int score) {
-        try {
-            FileWriter fw = new FileWriter(SCORE_FILE, true);
-            fw.write(name + " (" + subject + ") scored " + score + " points.\n");
-            fw.close();
-        } catch (Exception e) {
-            System.out.println("Error saving score!");
-        }
-    }
-
-    // ---------------- LOAD SUBJECT ------------------
-    public static void loadSubject(String fileName, String[][] arr, String subjectName) {
-        try {
-            File file = new File(fileName);
-            Scanner sc = new Scanner(file);
-
-            int index = 0;
-
-            while (sc.hasNextLine() && index < 30) {
-                String line = sc.nextLine();
-                String[] parts = line.split(";");
-                if (parts.length == 6) {
-                    arr[index] = parts;
-                    index++;
-                }
-            }
-
-            setCount(arr, index);
-            sc.close();
-
-        } catch (Exception e) {
-            System.out.println("No file found for " + subjectName + ". Creating empty bank.");
-        }
-    }
-
-    // ---------------- SAVE SUBJECT ------------------
-    public static void saveSubject(String[][] arr, String fileName) {
-        try {
-            FileWriter fw = new FileWriter(fileName);
-            int count = getCount(arr);
-
-            for (int i = 0; i < count; i++) {
-                fw.write(arr[i][0] + ";" + arr[i][1] + ";" + arr[i][2] + ";" 
-                        arr[i][3] + ";" + arr[i][4] + ";" + arr[i][5] + "\n");
-                 arr[i][3] + ";" + arr[i][4] + ";" + arr[i][5] + "\n");
-            }
-
-            fw.close();
-
-        } catch (Exception e) {
-            System.out.println("Error saving file: " + fileName);
-        }
-    }
-
-    // ----------- UTILITY: GET COUNT ------------
-    public static int getCount(String[][] arr) {
-<<<<<<< HEAD
-        if (arr == islamiyat)
-            return islamCount;
-        if (arr == math)
-            return mathCount;
-        if (arr == english)
-            return englishCount;
-        if (arr == science)
-            return scienceCount;
-=======
-        if (arr == islamiyat) return islamCount;
-        if (arr == math) return mathCount;
-        if (arr == english) return englishCount;
-        if (arr == science) return scienceCount;
->>>>>>> 070d6384b2125006c00d11e3f803ae0b5a66e394
-        return computerCount;
-    }
-
-    // ----------- UTILITY: SET COUNT ------------
-    public static void setCount(String[][] arr, int newCount) {
-<<<<<<< HEAD
-        if (arr == islamiyat)
-            islamCount = newCount;
-        else if (arr == math)
-            mathCount = newCount;
-        else if (arr == english)
-            englishCount = newCount;
-        else if (arr == science)
-            scienceCount = newCount;
-        else
-            computerCount = newCount;
-=======
-        if (arr == islamiyat) islamCount = newCount;
-        else if (arr == math) mathCount = newCount;
-        else if (arr == english) englishCount = newCount;
-        else if (arr == science) scienceCount = newCount;
-        else computerCount = newCount;
->>>>>>> 070d6384b2125006c00d11e3f803ae0b5a66e394
     }
 
 }

@@ -182,3 +182,61 @@ public class Test1 {
             System.out.println("Correct: " + arr[i][5]);
         }
     }
+ public static void updateQuestion(String[][] arr, String subject, String fileName) {
+        int count = getCount(arr);
+        if (count == 0) {
+            System.out.println("No questions to update.");
+            return;
+        }
+
+        System.out.print("Enter question number: ");
+        int q = Integer.parseInt(input.nextLine()) - 1;
+        if (q < 0 || q >= count) {
+            System.out.println("Invalid question number!");
+            return;
+        }
+
+        System.out.print("New Question: ");
+        arr[q][0] = input.nextLine();
+        System.out.print("New Option A: ");
+        arr[q][1] = input.nextLine();
+        System.out.print("New Option B: ");
+        arr[q][2] = input.nextLine();
+        System.out.print("New Option C: ");
+        arr[q][3] = input.nextLine();
+        System.out.print("New Option D: ");
+        arr[q][4] = input.nextLine();
+        System.out.print("New Correct Answer: ");
+        arr[q][5] = input.nextLine().toUpperCase();
+
+        saveSubject(arr, fileName);
+        System.out.println("Question updated!");
+ }
+    public static void studentLogin() {
+        System.out.print("Enter your name: ");
+        String name = input.nextLine();
+
+        System.out.println("\n1. Islamiyat\n2. Math\n3. English\n4. Science\n5. Computer");
+        System.out.print("Choose subject: ");
+        String ch = input.nextLine();
+
+        switch (ch) {
+            case "1":
+                takeQuiz(name, islamiat, "Islamiyat");
+                break;
+            case "2":
+                takeQuiz(name, math, "Math");
+                break;
+            case "3":
+                takeQuiz(name, english, "English");
+                break;
+            case "4":
+                takeQuiz(name, science, "Science");
+                break;
+            case "5":
+                takeQuiz(name, computer, "Computer");
+                break;
+            default:
+                System.out.println("Invalid subject!");
+        }
+    }

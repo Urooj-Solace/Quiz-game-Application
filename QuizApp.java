@@ -226,12 +226,23 @@ public static void adminPanel(String[][] subjectArray, String subjectName, Strin
         String ch = input.nextLine();
 
         switch (ch) {
-            case "1": takeQuiz(name, islamiyat, "Islamiyat"); break;
-            case "2": takeQuiz(name, math, "Math"); break;
-            case "3": takeQuiz(name, english, "English"); break;
-            case "4": takeQuiz(name, science, "Science"); break;
-            case "5": takeQuiz(name, computer, "Computer"); break;
-            default: System.out.println("Invalid subject!");
+            case "1":
+                takeQuiz(name, islamiyat, "Islamiyat"); 
+                break;
+            case "2": 
+                takeQuiz(name, math, "Math"); 
+                break;
+            case "3": 
+                takeQuiz(name, english, "English"); 
+                break;
+            case "4": 
+                takeQuiz(name, science, "Science");
+                break;
+            case "5":
+                takeQuiz(name, computer, "Computer"); 
+                break;
+            default:
+                System.out.println("Invalid subject!");
         }
     }
 

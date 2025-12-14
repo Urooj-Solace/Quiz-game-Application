@@ -178,4 +178,64 @@ public static void adminPanel(String[][] subjectArray, String subjectName, Strin
             System.out.println("Correct: " + arr[i][5]);
         }
     }
+ public static void updateQuestion(String[][] arr, String subjectName, String fileName) {
+        int count = getCount(arr);
+
+        System.out.print("Enter question number to update: ");
+        int qNo = Integer.parseInt(input.nextLine()) - 1;
+
+        if (qNo < 0 || qNo >= count) {
+            System.out.println("Invalid question number!");
+            return;
+        }
+
+        System.out.print("New Question: ");
+        arr[qNo][0] = input.nextLine();
+
+        System.out.print("New Option A: ");
+        arr[qNo][1] = input.nextLine();
+
+        System.out.print("New Option B: ");
+        arr[qNo][2] = input.nextLine();
+
+        System.out.print("New Option C: ");
+        arr[qNo][3] = input.nextLine();
+
+        System.out.print("New Option D: ");
+        arr[qNo][4] = input.nextLine();
+
+        System.out.print("New Correct Answer (A/B/C/D): ");
+        arr[qNo][5] = input.nextLine().toUpperCase();
+
+        saveSubject(arr, fileName);
+
+        System.out.println("Question updated successfully!");
+    }
+    public static void studentLogin() {
+
+        System.out.print("Enter your name: ");
+        String name = input.nextLine();
+
+        System.out.println("\nSelect Subject:");
+        System.out.println("1. Islamiyat");
+        System.out.println("2. Math");
+        System.out.println("3. English");
+        System.out.println("4. Science");
+        System.out.println("5. Computer");
+        System.out.print("Enter choice: ");
+        String ch = input.nextLine();
+
+        switch (ch) {
+            case "1": takeQuiz(name, islamiyat, "Islamiyat"); break;
+            case "2": takeQuiz(name, math, "Math"); break;
+            case "3": takeQuiz(name, english, "English"); break;
+            case "4": takeQuiz(name, science, "Science"); break;
+            case "5": takeQuiz(name, computer, "Computer"); break;
+            default: System.out.println("Invalid subject!");
+        }
+    }
+
+
+
+
 

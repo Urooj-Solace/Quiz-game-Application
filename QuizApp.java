@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Test1 {
+public class QuizApp {
 
     static Scanner input = new Scanner(System.in);
 

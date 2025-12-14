@@ -278,3 +278,53 @@ public static void takeQuiz(String name, String[][] arr, String subject) {
             System.out.println("Error saving file.");
         }
     }
+     public static void loadSubject(String fileName, String[][] arr, String subject) {
+        try {
+            Scanner sc = new Scanner(new File(fileName));
+            int i = 0;
+            while (sc.hasNextLine() && i < 30) {
+                arr[i++] = sc.nextLine().split(";");
+            }
+            setCount(arr, i);
+            sc.close();
+        } catch (Exception e) {
+            System.out.println("No file found for " + subject + ". Creating empty bank.");
+        }
+    }
+
+    public static void saveScore(String name, String subject, int score) {
+        try {
+            FileWriter fw = new FileWriter(SCORE_FILE, true);
+            fw.write(name + " (" + subject + ") scored " + score + "\n");
+            fw.close();
+        } catch (Exception e) {
+            System.out.println("Error saving score.");
+        }
+    }
+
+    public static int getCount(String[][] arr) {
+        if (arr == islamiat)
+            return islamCount;
+        if (arr == math)
+            return mathCount;
+        if (arr == english)
+            return englishCount;
+        if (arr == science)
+            return scienceCount;
+        return computerCount;
+    }
+
+    public static void setCount(String[][] arr, int val) {
+        if (arr == islamiat)
+            islamCount = val;
+        else if (arr == math)
+            mathCount = val;
+        else if (arr == english)
+            englishCount = val;
+        else if (arr == science)
+            scienceCount = val;
+        else
+            computerCount = val;
+    }
+}
+

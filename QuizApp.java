@@ -96,4 +96,86 @@ case "6":
     return;
 default:
     System.out.println("Invalid choice!");
+  }
+ }
+}
+public static void adminPanel(String[][] subjectArray, String subjectName, String fileName) {
+
+        while (true) {
+            System.out.println("\n ADMIN PANEL (" + subjectName + ") ");
+            System.out.println("1. Add Question");
+            System.out.println("2. View Questions");
+            System.out.println("3. Update Question");
+            System.out.println("4. Back");
+
+            System.out.print("Enter choice: ");
+            String ch = input.nextLine();
+
+            switch (ch) {
+                case "1":
+                     addQuestion(subjectArray, subjectName, fileName);
+                      break;
+                case "2":
+                     viewQuestions(subjectArray, subjectName);
+                      break;
+                case "3":
+                     updateQuestion(subjectArray, subjectName, fileName);
+                      break;
+                case "4":
+                     return;
+                default:
+                     System.out.println("Invalid choice!");
+            }
+        }
+    }
+     public static void addQuestion(String[][] arr, String subjectName, String fileName) {
+
+        int count = getCount(arr);
+
+        if (count >= 30) {
+            System.out.println("Maximum 30 questions allowed in " + subjectName + ".");
+            return;
+        }
+
+        System.out.print("Enter Question: ");
+        arr[count][0] = input.nextLine();
+
+        System.out.print("Option A: ");
+        arr[count][1] = input.nextLine();
+
+        System.out.print("Option B: ");
+        arr[count][2] = input.nextLine();
+
+        System.out.print("Option C: ");
+        arr[count][3] = input.nextLine();
+
+        System.out.print("Option D: ");
+        arr[count][4] = input.nextLine();
+
+        System.out.print("Correct Answer (A/B/C/D): ");
+        arr[count][5] = input.nextLine().toUpperCase();
+
+        setCount(arr, count + 1);
+
+        saveSubject(arr, fileName);
+        System.out.println("Question added successfully!");
+    }
+
+    public static void viewQuestions(String[][] arr, String subjectName) {
+        int count = getCount(arr);
+
+        if (count == 0) {
+            System.out.println("No questions in " + subjectName + ".");
+            return;
+        }
+
+        for (int i = 0; i < count; i++) {
+            System.out.println("\nQ" + (i + 1) + ": " + arr[i][0]);
+            System.out.println("A. " + arr[i][1]);
+            System.out.println("B. " + arr[i][2]);
+            System.out.println("C. " + arr[i][3]);
+            System.out.println("D. " + arr[i][4]);
+            System.out.println("Correct: " + arr[i][5]);
+        }
+    }
 

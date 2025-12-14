@@ -141,4 +141,44 @@ public class Test1 {
             }
         }
     }
-  
+  public static void addQuestion(String[][] arr, String subject, String fileName) {
+        int count = getCount(arr);
+        if (count >= 30) {
+            System.out.println("Maximum 30 questions allowed.");
+            return;
+        }
+
+        System.out.print("Question: ");
+        arr[count][0] = input.nextLine();
+        System.out.print("Option A: ");
+        arr[count][1] = input.nextLine();
+        System.out.print("Option B: ");
+        arr[count][2] = input.nextLine();
+        System.out.print("Option C: ");
+        arr[count][3] = input.nextLine();
+        System.out.print("Option D: ");
+        arr[count][4] = input.nextLine();
+        System.out.print("Correct Answer (A/B/C/D): ");
+        arr[count][5] = input.nextLine().toUpperCase();
+
+        setCount(arr, count + 1);
+        saveSubject(arr, fileName);
+        System.out.println("Question added successfully!");
+    }
+
+    public static void viewQuestions(String[][] arr, String subject) {
+        int count = getCount(arr);
+        if (count == 0) {
+            System.out.println("No questions available.");
+            return;
+        }
+
+        for (int i = 0; i < count; i++) {
+            System.out.println("\nQ" + (i + 1) + ": " + arr[i][0]);
+            System.out.println("A. " + arr[i][1]);
+            System.out.println("B. " + arr[i][2]);
+            System.out.println("C. " + arr[i][3]);
+            System.out.println("D. " + arr[i][4]);
+            System.out.println("Correct: " + arr[i][5]);
+        }
+    }

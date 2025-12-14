@@ -240,3 +240,41 @@ public class Test1 {
                 System.out.println("Invalid subject!");
         }
     }
+public static void takeQuiz(String name, String[][] arr, String subject) {
+        int count = getCount(arr);
+        if (count == 0) {
+            System.out.println("No questions available.");
+            return;
+        }
+
+        int score = 0;
+        for (int i = 0; i < count; i++) {
+            System.out.println("\n" + arr[i][0]);
+            System.out.println("A. " + arr[i][1]);
+            System.out.println("B. " + arr[i][2]);
+            System.out.println("C. " + arr[i][3]);
+            System.out.println("D. " + arr[i][4]);
+            System.out.print("Your answer: ");
+            String ans = input.nextLine().toUpperCase();
+
+            if (ans.equals(arr[i][5])) {
+                score++;
+            }
+        }
+
+        System.out.println("Score: " + score + "/" + count);
+        saveScore(name, subject, score);
+    }
+
+    public static void saveSubject(String[][] arr, String fileName) {
+        try {
+            FileWriter fw = new FileWriter(fileName);
+            int count = getCount(arr);
+            for (int i = 0; i < count; i++) {
+                fw.write(String.join(";", arr[i]) + "\n");
+            }
+            fw.close();
+        } catch (Exception e) {
+            System.out.println("Error saving file.");
+        }
+    }
